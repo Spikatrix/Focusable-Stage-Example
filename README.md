@@ -4,7 +4,7 @@ This example is a libGDX demo that shows the Focusable Stage in action
 
 <img src="media/FocusableStageExample.gif" alt="GIF showing the Focusable Stage in action">
 
-### How to use ###
+### Usage ###
 
  1. Copy the [`FocusableStage` file](https://github.com/Spikatrix/Focusable-Stage-Example/blob/master/core/src/com/example/focusablestage/FocusableStage.java) into your project and import it
  2. Replace `Stage` with `FocusableStage`:
@@ -31,4 +31,4 @@ This example is a libGDX demo that shows the Focusable Stage in action
   
 <hr>
 
-This example uses the neon-ui skin made by [Raymond "Raeleus" Buckley](https://github.com/raeleus) using [Skin Composer](https://github.com/raeleus/skin-composer)
+This example uses the [neon-ui skin](https://ray3k.wordpress.com/neon-ui-skin-for-libgdx/) made by [Raymond "Raeleus" Buckley](https://github.com/raeleus) using [Skin Composer](https://github.com/raeleus/skin-composer)
