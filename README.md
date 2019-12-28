@@ -1,6 +1,8 @@
 # Focusable Stage Example #
 
-This example is a demo on how the Focusable Stage behaves in action.
+This example is a libGDX demo on how the Focusable Stage behaves in action.
+
+<img src="media/FocusableStageExample.gif" alt="GIF showing the Focusable Stage in action">
 
 ### How to use ###
 
@@ -18,10 +20,10 @@ This example is a demo on how the Focusable Stage behaves in action.
         
  ### Supported keyboard inputs ###
  
-  - TAB             for focusing the next Actor
-  - SHIFT + TAB     for focusing the previous Actor
-  - LEFT            for focusing the previous Actor provided it isn't busy
-  - RIGHT           for focusing the next Actor provided it isn't busy
-  - UP              for focusing the above Actor provided it isn't busy
-  - DOWN            for focusing the below Actor provided it isn't busy
-  - Enter or Space  for pressing the currently focused Actor provided it isn't busy
+  - `TAB`               for focusing the next Actor
+  - `SHIFT + TAB`       for focusing the previous Actor
+  - `LEFT`              for focusing the previous Actor provided it isn't busy
+  - `RIGHT`             for focusing the next Actor provided it isn't busy
+  - `UP`                for focusing the above Actor provided it isn't busy
+  - `DOWN`              for focusing the below Actor provided it isn't busy
+  - `Enter` or `Space`  for pressing the currently focused Actor provided it isn't busy
