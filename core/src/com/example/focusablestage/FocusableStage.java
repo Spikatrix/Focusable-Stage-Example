@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 /**
- * The FocusableActorStage is basically a Stage with focus managing capabilities on Actors
+ * The FocusableStage is basically a Stage with focus managing capabilities on Actors
  * This means that it can track and focus actors when the user navigates using the keyboard
  *
  * <p>
