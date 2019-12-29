@@ -215,10 +215,7 @@ public class FocusableStage extends Stage {
      */
     private Actor getBelowActor() {
         if (currentFocusedActor == null) {
-            currentFocusedActor = getFirstActor();
-            if (currentFocusedActor == null) {
-                return null;
-            }
+            return getFirstActor();
         }
 
         int colIndex = 0;
@@ -251,10 +248,7 @@ public class FocusableStage extends Stage {
      */
     private Actor getAboveActor() {
         if (currentFocusedActor == null) {
-            currentFocusedActor = getLastActor();
-            if (currentFocusedActor == null) {
-                return null;
-            }
+            return getLastActor();
         }
 
         int colIndex = 0;
