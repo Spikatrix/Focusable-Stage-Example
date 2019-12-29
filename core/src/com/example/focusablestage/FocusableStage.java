@@ -420,7 +420,7 @@ public class FocusableStage extends Stage {
      */
     @Override
     public boolean keyDown(int keyCode) {
-        if (!isActive) {
+        if (!isActive || downActor != null) {
             return super.keyDown(keyCode);
         }
 
