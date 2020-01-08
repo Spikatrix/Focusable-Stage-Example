@@ -15,6 +15,10 @@ This example is a libGDX demo that shows the Focusable Stage in action
         stage.addFocusableActor(new TextButton("button 1", skin), 3); // 3 signifies the colspan of the Actor; default is 1 if you omit it
         stage.addFocusableActor(new TextButton("button 2", skin));    // Uses 1 colspan because the second argument was omitted
         stage.row(); // Used to signify the end of a row just like `Table`s
+        
+        // IMPORTANT: You'll need to include "textfield" in the name of TextField before adding them so that 
+        // the FocusableStage recognizes it as a TextField Actor and runs the custom management on them
+        // Like so: textfieldActor.setName("This is a TextField");
  4. Optionally, use `setFocusedActor` to focus a particular `Actor`:
   
         stage.setFocusedActor(textbutton3);
