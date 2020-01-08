@@ -15,17 +15,19 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  * This means that it can track and focus actors when the user navigates using the keyboard
  *
  * <p>
- * I've implemented custom behaviors for TextFields as I use them in my project
+ * Custom behavior implemented for:
+ * - TextFields
  *
  * <p>
  * Currently supported keyboard inputs include:
  * - TAB            for focusing the next Actor
  * - SHIFT + TAB    for focusing the previous Actor
- * - LEFT           for focusing the previous Actor provided it isn't busy
- * - RIGHT          for focusing the next Actor provided it isn't busy
- * - UP             for focusing the above Actor provided it isn't busy
- * - DOWN           for focusing the below Actor provided it isn't busy
- * - Enter or Space for pressing the currently focused Actor provided it isn't busy
+ * - LEFT           for focusing the previous Actor
+ * - RIGHT          for focusing the next Actor
+ * - UP             for focusing the above Actor
+ * - DOWN           for focusing the below Actor
+ * - Enter or Space for pressing the currently focused Actor
+ * provided the currently focused actor is not busy
  *
  * @author Spikatrix
  */
@@ -414,21 +416,21 @@ public class FocusableStage extends Stage {
      */
     @Override
     public boolean keyDown(int keyCode) {
-        if (!isActive || downActor != null) {
+        if (!isActive || downActor != null || !actorIsNotBusy(keyCode)) {
             return super.keyDown(keyCode);
         }
 
         boolean handled = false, shiftHeldDown = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT));
 
-        if ((keyCode == Input.Keys.TAB && !shiftHeldDown) || (keyCode == Input.Keys.RIGHT && actorIsNotBusy(keyCode))) {
+        if ((keyCode == Input.Keys.TAB && !shiftHeldDown) || keyCode == Input.Keys.RIGHT) {
             handled = setFocusedActor(getNextActor());
-        } else if ((keyCode == Input.Keys.TAB && shiftHeldDown) || (keyCode == Input.Keys.LEFT && actorIsNotBusy(keyCode))) {
+        } else if ((keyCode == Input.Keys.TAB && shiftHeldDown) || keyCode == Input.Keys.LEFT && actorIsNotBusy(keyCode)) {
             handled = setFocusedActor(getPreviousActor());
         } else if (keyCode == Input.Keys.DOWN) {
             handled = setFocusedActor(getBelowActor());
         } else if (keyCode == Input.Keys.UP) {
             handled = setFocusedActor(getAboveActor());
-        } else if ((keyCode == Input.Keys.ENTER || keyCode == Input.Keys.SPACE) && actorIsNotBusy(keyCode)) {
+        } else if ((keyCode == Input.Keys.ENTER || keyCode == Input.Keys.SPACE)) {
             handled = triggerTouchDown();
         }
 

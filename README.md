@@ -23,12 +23,14 @@ This example is a libGDX demo that shows the Focusable Stage in action
  
   - `TAB`               for focusing the next Actor
   - `SHIFT` + `TAB`     for focusing the previous Actor
-  - `LEFT`              for focusing the previous Actor provided it isn't busy
-  - `RIGHT`             for focusing the next Actor provided it isn't busy
-  - `UP`                for focusing the above Actor provided it isn't busy
-  - `DOWN`              for focusing the below Actor provided it isn't busy
-  - `Enter` or `Space`  for pressing the currently focused Actor provided it isn't busy
+  - `LEFT`              for focusing the previous Actor
+  - `RIGHT`             for focusing the next Actor
+  - `UP`                for focusing the above Actor
+  - `DOWN`              for focusing the below Actor
+  - `Enter` or `Space`  for pressing the currently focused Actor
+  
+provided the currently focused actor is not busy
   
 <hr>
 
-This example uses the [neon-ui skin](https://ray3k.wordpress.com/neon-ui-skin-for-libgdx/) made by [Raymond "Raeleus" Buckley](https://github.com/raeleus) using [Skin Composer](https://github.com/raeleus/skin-composer)
+This example uses the [neon-ui skin](https://ray3k.wordpress.com/neon-ui-skin-for-libgdx/) made by [Raymond "Raeleus" Buckley](https://github.com/raeleus) using [Skin Composer](https://github.com/raeleus/skin-composer) which is licenced under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
