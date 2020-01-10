@@ -424,7 +424,7 @@ public class FocusableStage extends Stage {
 
         if ((keyCode == Input.Keys.TAB && !shiftHeldDown) || keyCode == Input.Keys.RIGHT) {
             handled = setFocusedActor(getNextActor());
-        } else if ((keyCode == Input.Keys.TAB && shiftHeldDown) || keyCode == Input.Keys.LEFT && actorIsNotBusy(keyCode)) {
+        } else if ((keyCode == Input.Keys.TAB && shiftHeldDown) || keyCode == Input.Keys.LEFT) {
             handled = setFocusedActor(getPreviousActor());
         } else if (keyCode == Input.Keys.DOWN) {
             handled = setFocusedActor(getBelowActor());
