@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -16,7 +17,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  *
  * <p>
  * Custom behavior implemented for:
- * - TextFields
+ * - TextField
+ * - SelectBox
  *
  * <p>
  * Currently supported keyboard inputs include:
@@ -314,8 +316,9 @@ public class FocusableStage extends Stage {
      * change its focus as it has the behavior of highlighting its next option for the down key
      *
      * <p>
-     * Currently I've only implemented custom behavior for a TextField since that's the only
-     * Widget that I've used in my Project which required custom management
+     * Currently, implemented custom behavior for
+     * - TextField
+     * - SelectBox
      *
      * @param keyCode The input key's keycode
      * @return true if the Actor is not "busy"
@@ -332,6 +335,20 @@ public class FocusableStage extends Stage {
                 return textField.getCursorPosition() == 0 && textField.getSelection().isEmpty();
             } else if (keyCode == Input.Keys.RIGHT) {
                 return textField.getCursorPosition() == textField.getText().length() && textField.getSelection().isEmpty();
+            }
+        } else if (isASelectBox(currentFocusedActor)) {
+            SelectBox selectBox = (SelectBox) currentFocusedActor;
+            boolean isExpanded = selectBox.getList().isTouchable(); // Why isn't there a selectBox.isExpanded() method built-in?
+
+            if (isExpanded) {
+                if (keyCode == Input.Keys.DOWN || keyCode == Input.Keys.UP ||
+                        keyCode == Input.Keys.ENTER || keyCode == Input.Keys.SPACE) {
+                    return false;
+                }
+
+                // Collapse the SelectBox as some other key was pressed
+                triggerTouchDown();
+                triggerTouchUp();
             }
         }
 
@@ -354,6 +371,24 @@ public class FocusableStage extends Stage {
 
         String name = actor.getName();
         return name != null && name.toUpperCase().contains("TEXTFIELD");
+    }
+
+    /**
+     * Determines if the Actor is a SelectBox.
+     * This is done by examining if the name of the Actor object contains "SELECTBOX"
+     * So yes, you'll need to name your Actors beforehand
+     *
+     * @param actor The Actor to check
+     * @return true if the Actor is a SelectBox
+     * false if the Actor is not a SelectBox
+     */
+    private boolean isASelectBox(Actor actor) {
+        if (actor == null) {
+            return false;
+        }
+
+        String name = actor.getName();
+        return name != null && name.toUpperCase().contains("SELECTBOX");
     }
 
     /**
@@ -430,7 +465,7 @@ public class FocusableStage extends Stage {
             handled = setFocusedActor(getBelowActor());
         } else if (keyCode == Input.Keys.UP) {
             handled = setFocusedActor(getAboveActor());
-        } else if ((keyCode == Input.Keys.ENTER || keyCode == Input.Keys.SPACE)) {
+        } else if (keyCode == Input.Keys.ENTER || keyCode == Input.Keys.SPACE) {
             handled = triggerTouchDown();
         }
 
