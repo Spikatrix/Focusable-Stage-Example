@@ -32,7 +32,6 @@ public class FocusableStageExample extends ApplicationAdapter {
         for (int i = 0; i < 16; i++) {
             if (i == 4 || i == 6 || i == 13) {
                 textFields[fieldIndex] = new TextField((i + 1) + ", " + (i + 2), skin);
-                textFields[fieldIndex].setName("Sample textfield");
                 textFields[fieldIndex].setAlignment(Align.center);
 
                 table.add(textFields[fieldIndex]).colspan(2).pad(10f);
